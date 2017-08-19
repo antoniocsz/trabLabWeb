@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Exército Brasileiro</title>
+		
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="/assets/css/materialize.min.css"  media="screen,projection"/>
+		
+		<link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+		<script type="text/javascript" src="/login.js"></script>
+
+		<!--<script>
+		function Logar() {
+			a=document.forms[0].usuario.value
+			b=document.forms[0].senha.value
+			if(a=="Usuario" && b=="Senha"){ location="https://www.google.com.br" }
+			else{ alert("Nome de usuario ou senha invalidos")}	
+		}
+		</script> -->
+		
+	</head>
+
+	<body>
+	<div class="background">
+		
+		<center>
+		<div class="login-box">
+			
+		<form action="/login" method="post">
+        		<div class="form-group">
+            	<label>Login</label>
+            	<input placeholder = "Usuario" type="text" class="form-control" name="email">
+        	</div>
+        		<div class="form-group">
+            	<label>Senha</label>
+            	<input placeholder ="Senha" type="password" class="form-control" name="password">
+        	</div>
+
+        	<button type="submit" class="btn btn-warning btn-lg">Login</button>
+    	</form>
+			
+		</div>
+		</center>
+
+	</div>
+	</body>
+  
+</html>
