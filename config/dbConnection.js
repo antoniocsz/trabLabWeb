@@ -5,7 +5,7 @@ var connMySQL = function(){
 		host : 'localhost',
 		user : 'root',
 		password : 'root',
-		database : 'cadearmas'
+		database : 'cademinhasarmas'
 	});
 }
 

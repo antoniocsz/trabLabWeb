@@ -7,12 +7,7 @@ var bodyParser = require('body-parser');
 var consign = require('consign');
 var expressValidator= require('express-validator');
 
-var index = require('./routes/index');
-//var users = require('./routes/users');
-
 var app = express();
-
-
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -36,10 +31,7 @@ consign()
 .then('models')
 .then('controller')
 .into(app);
- 
 
-//app.use('/', index);
-//app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
