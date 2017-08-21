@@ -3,25 +3,30 @@ function ArmamentoDAO(connection) {
 }
 
 ArmamentoDAO.prototype.listar = function (callback) {
-  var sql = "select sigla, data, quantidade, nomeguerra, posto from ManterCautela as m ";
-  sql += " INNER JOIN Reserva_material as r on m.reserva_id = r.id ";
-  sql += " INNER JOIN Reserva as res on res.idreserva = r.cod_reserva "
-  sql += " INNER JOIN Militar as mil on mil.idmilitar = m.militar_id order by data; ";
-
+  var sql = "select numeroserie as serie, modelo, fabricante, id ";
+  sql += " from Armamento  order by id; ";
+  
   this._connection.query(sql, callback);
 }
 
 
-ArmamentoDAO.prototype.salvar = function (callback) {
-  
+ArmamentoDAO.prototype.salvar = function (armamento, callback) {
+  if (armamento.id) {
+    this._connection.query('update Armamento set ? WHERE id=?', [armamento, armamento.id], callback);
+  } else {
+    this._connection.query('insert into Armamento set ?', armamento, callback);
+  }
 }
 
-ArmamentoDAO.prototype.deletar = function (callback) {
-  
+ArmamentoDAO.prototype.deletar = function (id, callback) {
+  this._connection.query('delete from Armamento WHERE id= ?',id, callback);
 }
 
-ArmamentoDAO.prototype.getById = function (callback) {
-
+ArmamentoDAO.prototype.getById = function (id, callback) {
+  var sql  = "select id, numeroserie, fabricante, modelo " ;
+  sql     += " from Armamento where id = " + id + " order by id;"; 
+  
+  this._connection.query(sql, callback);
 }
 
 module.exports = function () {

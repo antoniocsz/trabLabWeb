@@ -5,7 +5,17 @@ module.exports.reservas = function (app, req, res) {
 
   reservaDAO.listar(function (error, result) {
     console.log(result);
-    res.render("reserva", { reservas: result });
+    res.render("reservas", { reservas: result });
   });
 
+}
+
+
+module.exports.novo = function (app, req, res) {
+
+    var reserva = [{
+
+    }];
+
+    res.render('reserva', { reserva: reserva });
 }
