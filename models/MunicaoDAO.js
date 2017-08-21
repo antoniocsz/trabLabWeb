@@ -3,25 +3,28 @@ function MunicaoDAO(connection) {
 }
 
 MunicaoDAO.prototype.listar = function (callback) {
-  var sql = "select sigla, data, quantidade, nomeguerra, posto from ManterCautela as m ";
-  sql += " INNER JOIN Reserva_material as r on m.reserva_id = r.id ";
-  sql += " INNER JOIN Reserva as res on res.idreserva = r.cod_reserva "
-  sql += " INNER JOIN Militar as mil on mil.idmilitar = m.militar_id order by data; ";
+  var sql = "select * from Municao order by idmunicao;";
 
   this._connection.query(sql, callback);
 }
 
 
-MunicaoDAO.prototype.salvar = function (callback) {
-  
+MunicaoDAO.prototype.salvar = function (municao, callback) {
+  if (municao.id) {
+    this._connection.query('update Municao set ? WHERE idmunicao= ?', [municao, municao.idmunicao], callback);
+  } else {
+    this._connection.query('insert into Municao set ?', municao, callback);
+  }
 }
 
-MunicaoDAO.prototype.deletar = function (callback) {
-  
+MunicaoDAO.prototype.deletar = function (id, callback) {
+  this._connection.query('delete from Municao WHERE idmunicao= ?',id, callback);
 }
 
-MunicaoDAO.prototype.getById = function (callback) {
-
+MunicaoDAO.prototype.getById = function (id, callback) {
+  var sql  = "select * from  Municao where idmunicao= " + id + " order by idmunicao;"; 
+  
+  this._connection.query(sql, callback);
 }
 
 module.exports = function () {

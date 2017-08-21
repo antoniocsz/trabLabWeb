@@ -1,0 +1,42 @@
+<% include header.ejs %>
+<% include navbar.ejs %>
+<% include sidebar.ejs %>
+<h3></h3>
+
+<form action="/salvar_municao" method="post">
+    <div class="row">
+        <div class="col m3 "></div>
+        <div class="col s12 m6 ">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Municao</span>
+                    
+                    <div>
+                        <input type="hidden" name="idmunicao" value= "<%= municao[0].idmunicao || null%>" <%= municao[0].idmunicao ? '' : 'disabled' %>>
+                    </div>
+                    
+                    <div class="input-field">
+                        <input name='calibre'  id="calibre" type="text" class="validate" value= "<%= municao[0].calibre || null%>"">
+                        <label class="active" for="calibre">Calibre</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input name='descricao'  id="descricao" type="text" class="validate" value= "<%= municao[0].descricao || null%>"">
+                        <label class="active" for="descricao">Descricão</label>
+                    </div>
+                    
+                </div>
+
+                <div class="card-action">
+                    <div>
+                        <button class="btn waves-effect waves-light blue darken-1 ">Salvar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col m3 "></div>
+    </div>
+</form>
+
+<% include footer.ejs %>

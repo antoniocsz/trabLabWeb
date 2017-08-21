@@ -1,0 +1,45 @@
+<% include header.ejs %>
+<% include navbar.ejs %>
+<% include sidebar.ejs %>
+<h3></h3>
+
+ <div class="row">
+    <div class="col m3 "></div>
+    <div class="col s12 m6 ">
+        <div class="card z-depth-5">
+        
+        <div class="card-content">
+        <span class="card-title">Munições</span>
+        <a href="/novo_municao" class="waves-effect waves-light btn blue darken-1 right">Nova Munição</a>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Calibre</th>
+                    <th>Descrição</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(var i=0; i< municoes.length; i++) {%>
+                <tr>
+                    <td><%= municoes[i].idmunicao %></td>
+                    <td><%= municoes[i].calibre %></td>
+                    <td><%= municoes[i].descricao %></td>
+                    
+                    <td><a href="/editar_municao/<%= municoes[i].idmunicao %>">Editar</a></td>
+                    <td><a href="/deletar_municao/<%= municoes[i].idmunicao %>">Excluir</a></td>
+                </tr>
+            <% } %>
+            </tbody>
+            </table>
+        </div>
+        
+        </div>
+    </div>
+
+    <div class="col m3 "></div>
+</div>
+
+<% include footer.ejs %>
