@@ -37,7 +37,7 @@ module.exports.editar = function (app, req, res) {
   var id            = req.params.id;  
   
   municaoDAO.getById(id, function (error, result) {
-      res.render("municao", { municao: result });
+    res.render("municao", { municao: result });
   });
 }
 

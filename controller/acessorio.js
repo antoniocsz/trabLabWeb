@@ -33,10 +33,10 @@ module.exports.deletar = function (app, req, res) {
 module.exports.editar = function (app, req, res) {
   var connection    = app.config.dbConnection();
   var acessorioDAO  = new app.models.AcessorioDAO(connection);
-  var idacessorio            = req.params.idacessorio;  
+  var id            = req.params.id;  
   
   acessorioDAO.getById(id, function (error, result) {
-      res.render("acessorio", { acessorio: result });
+    res.render("acessorio", { acessorio: result });
   });
 }
 

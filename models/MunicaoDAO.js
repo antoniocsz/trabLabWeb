@@ -10,15 +10,15 @@ MunicaoDAO.prototype.listar = function (callback) {
 
 
 MunicaoDAO.prototype.salvar = function (municao, callback) {
-  if (municao.id) {
-    this._connection.query('update Municao set ? WHERE idmunicao= ?', [municao, municao.idmunicao], callback);
+  if (municao.idmunicao) {
+    this._connection.query('update Municao set ? WHERE idmunicao= ?;', [municao, municao.idmunicao], callback);
   } else {
-    this._connection.query('insert into Municao set ?', municao, callback);
+    this._connection.query('insert into Municao set ?;', municao, callback);
   }
 }
 
 MunicaoDAO.prototype.deletar = function (id, callback) {
-  this._connection.query('delete from Municao WHERE idmunicao= ?',id, callback);
+  this._connection.query('delete from Municao WHERE idmunicao= ?;',id, callback);
 }
 
 MunicaoDAO.prototype.getById = function (id, callback) {

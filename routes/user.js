@@ -12,12 +12,12 @@ module.exports = function(app) {
       app.controller.user.salvar(app, req, res);
   });
 
-  // app.get('/usuario', function(req, res) {
-  //     app.controller.user.user(app, req, res);
-  // });
+  app.get('/deletar_usuario/:id', function(req, res) {
+      app.controller.user.deletar(app, req, res);
+  });
 
-  // app.get('/editar_usuario/:id', function(req, res) {
-  //     app.controller.user.usuarios(app, req, res);
-  // });
+  app.get('/editar_usuario/:id', function(req, res) {
+      app.controller.user.editar(app, req, res);
+  });
 
 };
