@@ -3,14 +3,14 @@ function UserDAO(connection) {
 }
 
 UserDAO.prototype.listar = function (callback) {
-  var sql = "select * from Usuario order by idUsuario;";
+  var sql = "select * from Usuario ";
+  sql += " order by idUsuario;";
 
   this._connection.query(sql, callback);
 }
 
 UserDAO.prototype.salvar = function (usuario, callback) {
   if (usuario.idUsuario) {
-    console.log(usuario);
     this._connection.query('update Usuario set ? WHERE idUsuario=?;', [usuario, usuario.idUsuario], callback);
   } else {
     this._connection.query('insert into Usuario set ?;', usuario, callback);
