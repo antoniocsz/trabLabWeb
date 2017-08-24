@@ -12,12 +12,12 @@ module.exports = function(app) {
       app.controller.reserva.salvar(app, req, res);
   });
 
-  // app.get('/reserva', function(req, res) {
-  //     app.controller.user.user(app, req, res);
-  // });
+  app.get('/deletar_reverva/:id', function(req, res) {
+      app.controller.reserva.deletar(app, req, res);
+  });
 
-  // app.get('/editar_reverva/:id', function(req, res) {
-  //     app.controller.reserva.reservas(app, req, res);
-  // });
-
+  app.get('/editar_reverva/:id', function(req, res) {
+      app.controller.reserva.editar(app, req, res);
+  });
+    
 };

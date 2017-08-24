@@ -1,21 +1,19 @@
-module.exports.reservas = function (app, req, res) {
+module.exports.cautelas = function (app, req, res) {
 
   var connection = app.config.dbConnection();
-  var reservaDAO = new app.models.ReservaDAO(connection);
+  var cautelaDAO = new app.models.CautelaDAO(connection);
 
-  reservaDAO.listar(function (error, result) {
+  cautelaDAO.listar(function (error, result) {
     console.log(result);
-    res.render("reservas", { reservas: result });
+    res.render("cautelas", { cautelas: result });
   });
 
 }
 
 module.exports.novo = function (app, req, res) {
 
-    var reserva = [{
-      idreserva: '',
-      sigla: '',
-      descricao: ''
+    var cautelas = [{
+
     }];
 
     res.render('reserva', { reserva: reserva });

@@ -3,7 +3,7 @@
 <% include sidebar.ejs %>
 <h3></h3>
 
-<form action="/salvar_usuario" method="post">
+<form action="/salvar_reservas" method="post">
     <div class="row">
         <div class="col m3 "></div>
         <div class="col s12 m6 ">
@@ -12,23 +12,23 @@
                     <span class="card-title">Usuário</span>
                     
                     <div>
-                        <input type="hidden" name="idUsuario" value= "<%= usuario[0].idUsuario || null%>" <%= usuario[0].idUsuario ? '' : 'disabled' %>>
+                        <input type="hidden" name="idreserva" value= "<%= reserva[0].idreserva || null%>" <%= reserva[0].idreserva ? '' : 'disabled' %>>
                     </div>
                     
                     <div class="input-field">
-                        <input name='nomecompleto'  id="nomecompleto" type="text" class="validate" value= "<%= usuario[0].nomecompleto || null%>"">
-                        <label  class="active" for="nome">Nome Completo</label>
+                        <input name='sigla'  id="sigla" type="text" class="validate" value= "<%= reserva[0].sigla || null%>"">
+                        <label  class="active" for="sigla">Sigla</label>
                     </div>
                     
                     <div class="input-field">
-                      <input name='login'  id="login" type="text" class="validate" value= "<%= usuario[0].login || null%>"">
-                      <label  class="active" for="login">Login</label>
+                      <input name='descricao'  id="descricao" type="text" class="validate" value= "<%= reserva[0].descricao || null%>"">
+                      <label  class="active" for="descricao">Descrição</label>
                     </div>
                     
-                    <div class="input-field">
-                      <input name='senha'  id="senha" type="password" class="validate" value= "<%= usuario[0].senha || null%>"">
+                    <!-- <div class="input-field">
+                      <input name='senha'  id="senha" type="password" class="validate" value= "<%= reserva[0].senha || null%>"">
                       <label  class="active" for="senha">Senha</label>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="card-action">
