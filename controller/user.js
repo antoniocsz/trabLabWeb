@@ -23,7 +23,7 @@ module.exports.novo = function (app, req, res) {
 
 module.exports.deletar = function (app, req, res) {
   var connection    = app.config.dbConnection();
-  var userDAO = new app.models.UserDAO(connection);
+  var userDAO       = new app.models.UserDAO(connection);
   var id            = req.params.id; 
 
   userDAO.getById(id, function (error, result) {

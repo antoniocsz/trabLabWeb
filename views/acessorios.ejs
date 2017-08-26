@@ -14,7 +14,6 @@
         <table class="striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Descrição</th>
                     <th></th>
                     <th></th>
@@ -23,7 +22,6 @@
             <tbody>
             <% for(var i=0; i< acessorios.length; i++) {%>
                 <tr>
-                    <td><%= acessorios[i].idacessorio %></td>
                     <td><%= acessorios[i].descricao %></td>
                     
                     <td><a href="/editar_acessorio/<%= acessorios[i].idacessorio %>">Editar</a></td>

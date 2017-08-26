@@ -10,14 +10,20 @@ module.exports.militares = function (app, req, res) {
 }
 
 module.exports.novo = function (app, req, res) {
-    var militar = [{
-      idmilitar: '',
-      posto: '',
-      nomeguerra: '',
-      Usuario_idUsuario: ''
-    }];
+  var connection    = app.config.dbConnection();
+  var userDAO  = new app.models.UserDAO(connection);
 
-    res.render('militar', { militar: militar });
+  var militar = [{
+    idmilitar: '',
+    posto: '',
+    nomeguerra: '',
+    Usuario_idUsuario: ''
+  }];
+  
+  userDAO.listar(function (error, result) {
+    var usuarios = result;
+    res.render('militar', { militar: militar, usuarios: usuarios });
+  });
 }
 
 module.exports.deletar = function (app, req, res) {
