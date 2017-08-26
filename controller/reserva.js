@@ -40,15 +40,15 @@ module.exports.editar = function (app, req, res) {
   var id            = req.params.id;  
   
   reservaDAO.getById(id, function(error, result){
-    res.render('reserva', { reserva: reserva });
+    res.render('reserva', { reserva: result });
   });
 }
 
 
 module.exports.salvar = function (app, req, res) {
-  var connection = app.config.dbConnection();
+  var connection    = app.config.dbConnection();
   var reservaDAO    = new app.models.ReservaDAO(connection);
-  var reserva = req.body;
+  var reserva       = req.body;
 
   reservaDAO.salvar(reserva, function (error, result) {
     reservaDAO.listar(function (error, result) {
