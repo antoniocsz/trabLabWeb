@@ -1,7 +1,7 @@
 module.exports = function(app) {
   
   app.get('/materiais', function(req, res) {
-      app.controller.reserva_material.items(app, req, res);
+      app.controller.reserva_material.materiais(app, req, res);
   });
 
   app.get('/novo_material', function(req, res) {

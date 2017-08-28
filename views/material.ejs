@@ -3,27 +3,50 @@
 <% include sidebar.ejs %>
 <h3></h3>
 
-<form action="/salvar_reservas" method="post">
+<form action="/salvar_material" method="post">
     <div class="row">
         <div class="col m3 "></div>
         <div class="col s12 m6 ">
             <div class="card">
                 <div class="card-content">
-                    <span class="card-title">Item</span>
+                    <span class="card-title">Material</span>
                     
                     <div>
-                        <input type="hidden" name="idreserva" value= "<%= reserva[0].idreserva || null%>" <%= reserva[0].idreserva ? '' : 'disabled' %>>
+                        <input type="hidden" name="id" value= "<%= material[0].id || null%>" <%= material[0].id ? '' : 'disabled' %>>
                     </div>
                     
                     <div class="input-field">
-                        <input name='sigla'  id="sigla" type="text" class="validate" value= "<%= reserva[0].sigla || null%>"">
+                        <select id= "cod_material" name= "cod_material" >
+                            <% for(var i=0; i< usuarios.length; i++){ %>
+                                <option value= <%= usuarios[i].idUsuario %> > <%=  usuarios[i].nomecompleto%></option>
+                            <% } %>
+                        </select>
+                        <label>Usuário</label>
+                    </div>
+
+                    
+                    <label>São Lázaro</label></br>
+                    <p>
+                      <input name="entra_sao_laz" type="radio" id="test1" value="s" <%= horario[0].entra_sao_laz == 's' ? 'checked': null%>/>
+                      <label for="test1">Sim</label>
+                    </p>
+                    <p>
+                      <input name="entra_sao_laz" type="radio" id="test1" value="n" <%= horario[0].entra_sao_laz == 'n' ? 'checked': null%>/>
+                      <label for="test1">Não</label>
+                    </p>
+
+
+
+<!-- 
+                    <div class="input-field">
+                        <input name='sigla'  id="sigla" type="text" class="validate" value= "<%= material[0].sigla || null%>"">
                         <label  class="active" for="sigla">Sigla</label>
                     </div>
                     
                     <div class="input-field">
-                      <input name='descricao'  id="descricao" type="text" class="validate" value= "<%= reserva[0].descricao || null%>"">
+                      <input name='descricao'  id="descricao" type="text" class="validate" value= "<%= material[0].descricao || null%>"">
                       <label  class="active" for="descricao">Descrição</label>
-                    </div>
+                    </div> -->
                     
                 </div>
 

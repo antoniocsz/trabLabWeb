@@ -3,23 +3,23 @@ function ReservaMaterialDAO(connection) {
 }
 
 ReservaMaterialDAO.prototype.listar = function (callback) {
-  var sql = "select r.sigla as sigla, a.modelo as material, 'Armamento' as tipo, rm.quantidade as qtd ";
+  var sql = "select rm.id, r.sigla as sigla, a.modelo as material, 'Armamento' as tipo, rm.quantidade as qtd ";
   sql += " from Reserva_material as rm ";
   sql += " inner join Reserva as r on r.idreserva = rm.cod_reserva ";
-  sql +=  " inner join Armamento as a on a.id = rm.cod_material ";
-  sql +=  " where rm.tipo_material = 1 ";
-  sql +=  " union all ";
-  sql +=  " select r.sigla as sigla, a.descricao as material, 'Acessorio' as tipo, rm.quantidade as qtd ";
-  sql +=  " from Reserva_material as rm ";
-  sql +=  " inner join Reserva as r on r.idreserva = rm.cod_reserva ";
-  sql +=  " inner join Acessorio as a on a.idacessorio = rm.cod_material ";
-  sql +=   " where rm.tipo_material = 2 ";
-  sql +=  " union all ";
-  sql +=   " select r.sigla as sigla, m.descricao as material, 'Municao' as tipo, rm.quantidade as qtd ";
-  sql +=   " from Reserva_material as rm ";
-  sql +=  " inner join Reserva as r on r.idreserva = rm.cod_reserva ";
-  sql +=  " inner join Municao as m on m.idmunicao = rm.cod_material ";
-  sql +=  " where rm.tipo_material = 3; ";
+  sql += " inner join Armamento as a on a.id = rm.cod_material ";
+  sql += " where rm.tipo_material = 1 ";
+  sql += " union all ";
+  sql += " select rm.id, r.sigla as sigla, a.descricao as material, 'Acessorio' as tipo, rm.quantidade as qtd ";
+  sql += " from Reserva_material as rm ";
+  sql += " inner join Reserva as r on r.idreserva = rm.cod_reserva ";
+  sql += " inner join Acessorio as a on a.idacessorio = rm.cod_material ";
+  sql += " where rm.tipo_material = 2 ";
+  sql += " union all ";
+  sql += " select rm.id, r.sigla as sigla, m.descricao as material, 'Municao' as tipo, rm.quantidade as qtd ";
+  sql += " from Reserva_material as rm ";
+  sql += " inner join Reserva as r on r.idreserva = rm.cod_reserva ";
+  sql += " inner join Municao as m on m.idmunicao = rm.cod_material ";
+  sql += " where rm.tipo_material = 3; ";
 
   this._connection.query(sql, callback);
 }
@@ -34,7 +34,7 @@ ReservaMaterialDAO.prototype.salvar = function (reserva, callback) {
 }
 
 ReservaMaterialDAO.prototype.deletar = function (id, callback) {
-  this._connection.query('delete from Reserva_material WHERE idreserva= ?;', id, callback);
+  this._connection.query('delete from Reserva_material WHERE id=?;', id, callback);
 }
 
 ReservaMaterialDAO.prototype.getById = function (id, callback) {

@@ -1,4 +1,4 @@
-module.exports.items = function (app, req, res) {
+module.exports.materiais = function (app, req, res) {
 
   var connection            = app.config.dbConnection();
   var reservaMaterialDAO    = new app.models.ReservaMaterialDAO(connection);
@@ -10,6 +10,9 @@ module.exports.items = function (app, req, res) {
 }
 
 module.exports.novo = function (app, req, res) {
+    
+    var connection            = app.config.dbConnection();
+    var reservaMaterialDAO    = new app.models.ReservaMaterialDAO(connection);
 
     var material = [{
       id: '',
@@ -19,8 +22,10 @@ module.exports.novo = function (app, req, res) {
       cod_reserva: '',
       qtd_total: '',
     }];
-
-    res.render('material', { material: material });
+    
+    reservaMaterialDAO.listar(function (error, result) {
+      res.render('material', { material: material,  itens: result });
+    });
 }
 
 
