@@ -16,37 +16,39 @@
                     </div>
                     
                     <div class="input-field">
+                        <input name='tipo_material'  id="tipo_material" type="number" class="validate" value= "<%= material[0].tipo_material || null%>"">
+                        <label  class="active" for="tipo_material">Material</label>
+                    </div>
+
+                    
+                    <div class="input-field">
                         <select id= "cod_material" name= "cod_material" >
-                            <% for(var i=0; i< usuarios.length; i++){ %>
-                                <option value= <%= usuarios[i].idUsuario %> > <%=  usuarios[i].nomecompleto%></option>
+                            <% for(var i=0; i< valores.length; i++){ %>
+                                <option value= <%= valores[i].id %> > <%=  valores[i].id%></option>
                             <% } %>
                         </select>
-                        <label>Usuário</label>
+                        <label>Armamentos</label>
                     </div>
-
-                    
-                    <label>São Lázaro</label></br>
-                    <p>
-                      <input name="entra_sao_laz" type="radio" id="test1" value="s" <%= horario[0].entra_sao_laz == 's' ? 'checked': null%>/>
-                      <label for="test1">Sim</label>
-                    </p>
-                    <p>
-                      <input name="entra_sao_laz" type="radio" id="test1" value="n" <%= horario[0].entra_sao_laz == 'n' ? 'checked': null%>/>
-                      <label for="test1">Não</label>
-                    </p>
-
-
-
-<!-- 
+                
+                
                     <div class="input-field">
-                        <input name='sigla'  id="sigla" type="text" class="validate" value= "<%= material[0].sigla || null%>"">
-                        <label  class="active" for="sigla">Sigla</label>
+                        <select id="idreserva" name= "idreserva" >
+                            <% for(var i=0; i< reservas.length; i++){ %>
+                                <option value= <%= reservas[i].idreserva %> > <%=  reservas[i].sigla%></option>
+                            <% } %>
+                        </select>
+                        <label>Reserva</label>
                     </div>
                     
                     <div class="input-field">
-                      <input name='descricao'  id="descricao" type="text" class="validate" value= "<%= material[0].descricao || null%>"">
-                      <label  class="active" for="descricao">Descrição</label>
-                    </div> -->
+                        <input name='quantidade'  id="quantidade" type="number" class="validate" value= "<%= material[0].quantidade || null%>"">
+                        <label  class="active" for="quantidade">Quantidade</label>
+                    </div>
+                    
+                    <div class="input-field">
+                      <input name='qtd_total'  id="qtd_total" type="number" class="validate" value= "<%= material[0].qtd_total || null%>"">
+                      <label  class="active" for="qtd_total">Quantidade total</label>
+                    </div> 
                     
                 </div>
 

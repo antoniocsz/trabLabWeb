@@ -1,27 +1,29 @@
 <% include header.ejs %>
-<% include navbar.ejs %>
 <% include sidebar.ejs %>
 
 <div class="container">
   <div class="row">
     <div class="col s12 m4 offset-m4">
-      <form class="login-form">
+      <form class="login-form" action="/fazer_login" method="post">
         <div class="card">
           <div class="card-content">
             <div class="input-field">
-              <input id="login" type="text" class="validate">
+              <input id="login" name="login" type="text" class="validate">
               <label for="login">Login</label>
             </div> 
             <div class="row">
               <div class="input-field">
-                <input id="password" type="password">
+                <input id="password" name="password" type="password">
                 <label for="password">Senha</label>
               </div>
             </div>
           </div>
           <div class="card-action blue-grey lighten-3">
           <div class="center-align">
-            <a href="#" class="btn blue-grey darken-1"><i class="material-icons left">vpn_key</i>Login</a>
+          <button class="btn blue-grey darken-1">
+            <i class="material-icons left">vpn_key</i>Login</a>
+          </button>
+            
           </div>
           </div>
         </div>

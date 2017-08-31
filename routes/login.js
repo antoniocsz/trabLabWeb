@@ -1,16 +1,22 @@
 module.exports = function(app) {
-	
+  
   app.get('/login', function(req, res) {
       app.controller.login.validar(app, req, res);
       // res.render('login.ejs', { message: req.flash('loginMessage') });
   });
 
-	app.post('/login', function(req, res) {
+  app.post('/fazer_login', function(req, res) {
+      app.controller.login.fazer_login(app, req, res);
+      // res.render('login.ejs', { message: req.flash('loginMessage') });
+  });
+
+  app.post('/login', function(req, res) {
       app.controller.login.validar(app, req, res);
       // res.render('login.ejs', { message: req.flash('loginMessage') });
   });
 
 };
+
 /*
 exports.login = function(req,res){
   var email= req.body.email;

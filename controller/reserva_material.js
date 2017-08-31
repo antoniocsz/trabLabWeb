@@ -12,7 +12,10 @@ module.exports.materiais = function (app, req, res) {
 module.exports.novo = function (app, req, res) {
     
     var connection            = app.config.dbConnection();
-    var reservaMaterialDAO    = new app.models.ReservaMaterialDAO(connection);
+    var armamentoDAO          = new app.models.ArmamentoDAO(connection);
+    var municaoDAO            = new app.models.MunicaoDAO(connection);
+    var acessorioDAO          = new app.models.AcessorioDAO(connection);
+    var reservaoDAO           = new app.models.ReservaDAO(connection);
 
     var material = [{
       id: '',
@@ -23,8 +26,23 @@ module.exports.novo = function (app, req, res) {
       qtd_total: '',
     }];
     
-    reservaMaterialDAO.listar(function (error, result) {
-      res.render('material', { material: material,  itens: result });
+    reservaoDAO.listar(function (error, result) {
+      var reservas = result;
+      armamentoDAO.listar( function(error, result) {
+        var armamentos = result;
+        municaoDAO.listar( function (error, result){
+          var municoes = result;
+          acessorioDAO.listar(function (error, result) {
+            var valores = [result, municoes, armamentos]; 
+
+            res.render('material', { 
+              reservas: reservas, 
+              material: material, 
+              valores: valores 
+            });    
+          });
+        });
+      });
     });
 }
 
@@ -58,9 +76,10 @@ module.exports.salvar = function (app, req, res) {
   var reservaMaterialDAO    = new app.models.ReservaMaterialDAO(connection);
   var item                  = req.body;
 
+      
+  console.log(item);
+
   reservaMaterialDAO.salvar(item, function (error, result) {
-    reservaMaterialDAO.listar(function (error, result) {
-      res.redirect('/materiais');
-    });
+    res.redirect('/materiais');
   });
 }
